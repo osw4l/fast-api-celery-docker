@@ -1,0 +1,10 @@
+fastapi>=0.68.0,<0.69.0
+pydantic>=1.8.0,<2.0.0
+uvicorn>=0.15.0,<0.16.0
+flower==1.0.0
+redis==3.5.3
+celery==5.1.2
+kombu==5.1.0
+pytz
+prometheus-fastapi-instrumentator
+kafka-python

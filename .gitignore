@@ -1,0 +1,7 @@
+celerybeat-schedule.db
+*.pyc
+*.pyo
+/.idea
+/venv
+.env
+/docker

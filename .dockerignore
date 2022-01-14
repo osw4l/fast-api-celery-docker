@@ -1,0 +1,10 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+/docker/*
+/venv/*
+*.csv
+env_template
+/.idea
