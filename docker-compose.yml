@@ -108,29 +108,10 @@ services:
       shared-network:
         ipv4_address: 172.16.238.12
 
-  zookeeper:
-    image: wurstmeister/zookeeper
-    container_name: zookeeper
-    ports:
-      - '2181:2181'
-    networks:
-      - kafka_network
-
-  kafka:
-    image: wurstmeister/kafka
-    container_name: Kafka
-    ports:
-      - '9092:9092'
-    env_file: .env
-    networks:
-      - backend_network
-      - kafka_network
-
 networks:
   redis_network:
   backend_network:
   ftp_network:
-  kafka_network:
   shared-network:
     name: shared-network
     driver: bridge

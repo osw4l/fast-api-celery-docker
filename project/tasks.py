@@ -4,7 +4,6 @@ import json
 from celery import Celery
 from ftplib import FTP
 import datetime
-from kafka import KafkaProducer
 from prometheus_client import Counter
 from celery.schedules import crontab
 
@@ -96,14 +95,6 @@ def ftp_collector():
 @celery.task(name="kafka_emitter", trail=True)
 def kafka_emitter():
     REQUEST_COUNT.labels("kafka_emitter").inc()
-    producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
-    date_time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-    message = {
-        'created_at': date_time,
-        'worker': 'celery'
-    }
-    encoded_data = json.dumps(message, indent=2).encode('utf-8')
-    producer.send('message', encoded_data)
     return {
         'message_sent': True
     }

@@ -7,4 +7,3 @@ celery==5.1.2
 kombu==5.1.0
 pytz
 prometheus-fastapi-instrumentator
-kafka-python
