@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    container_name: everfy_api
+    container_name: oswal_api
     build: .
     command: uvicorn project.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
     volumes:
@@ -18,7 +18,7 @@ services:
       ftp_network:
 
   redis:
-    container_name: everfy_redis
+    container_name: oswal_redis
     image: redis:latest
     restart: always
     volumes:
@@ -28,7 +28,7 @@ services:
     command: redis-server
 
   worker:
-    container_name: everfy_worker
+    container_name: oswal_worker
     build: .
     volumes:
       - .:/app
@@ -40,7 +40,7 @@ services:
       - ftp_network
 
   beat:
-    container_name: everfy_beat
+    container_name: oswal_beat
     build: .
     volumes:
       - .:/app
@@ -51,7 +51,7 @@ services:
       - redis_network
 
   flower:
-    container_name: everfy_flower
+    container_name: oswal_flower
     build: .
     command: celery flower --port=5555 --persistent=True
     ports:
@@ -66,7 +66,7 @@ services:
 
   ftp:
     image: stilliard/pure-ftpd:hardened
-    container_name: everfy_ftp
+    container_name: oswal_ftp
     volumes:
       - ./docker/ftp/data:/home/globant/
       - ./docker/ftp/password:/etc/pure-ftpd/passwd
